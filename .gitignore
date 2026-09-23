@@ -1,0 +1,40 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+**/api_key.txt
+**/api_key.local.txt
+
+# Python virtual environments, caches and test artefacts
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Runtime output and logs
+**/output/
+node_modules/
+*.log
+
+# Excel exports remain local; enterprise JSON may be versioned when authorised.
+*.xlsx
+*.docx
+
+# IDE and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+Desktop.ini

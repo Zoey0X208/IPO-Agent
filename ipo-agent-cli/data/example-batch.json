@@ -1,0 +1,59 @@
+{
+  "companies": [
+    {
+      "basic_registration": {
+        "qymc": "合肥星瀚功率半导体科技股份有限公司",
+        "uniscid": "91340100DEMO000001",
+        "qyjc": "星瀚半导体",
+        "cyrs": 318,
+        "zczb": 5000,
+        "sjzb": 5000,
+        "jyfw": "集成电路设计；功率半导体器件研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {"gdlx": "企业法人", "czbl": 46.2, "sje": 2310, "sjfs": "货币", "rjcze": 2310, "sjrq": "2024-06-30", "rjczrq": "2024-06-30", "rjczfs": "货币"}
+      ],
+      "annual_reports": [
+        {"vendinc": 36500, "progro": 5200, "netinc": 4200, "ratgro": 15, "liagro": 8},
+        {"vendinc": 49800, "progro": 7400, "netinc": 6300, "ratgro": 16, "liagro": 9}
+      ],
+      "tax_base_indicators": [{"tjnf": "2026", "I1_Q1": 15200, "I1_Q1_YOY": 18, "I4_Q1": 15200, "I5_Q1": 2100, "I14_Q1": 720}],
+      "tax_payment_records": [{"PAYABLE_VAT_AMOUNT": 520, "PAID_VAT_AMOUNT": 520, "PAYABLE_INCOMETAX_AMOUNT": 260, "PAID_INCOMETAX_AMOUNT": 260}],
+      "innovation_evaluations": [{"LITTLEGIANT_ENTERPRISES": "是", "HIGHANDNEW_ENTERPRISES": "是"}],
+      "patents": [{"ZLLX": "发明专利", "FMMC": "一种功率器件封装结构"}],
+      "bank_cash_flow_income": [{"TRADE_DATE": "202607", "TRADE_TYPE": "转账", "CURRENCY": "CNY", "TRADE_AMOUNT": 4500, "TRADE_BALANCE": 900, "TRADE_EFFECT": "收入", "TRADE_PATH": "银行"}],
+      "bank_cash_flow_expenses": [{"TRADE_DATE": "202607", "TRADE_TYPE": "转账", "TRADE_COUNT": 18, "TRADE_BLANCE": 700, "TRADE_AVG_AMOUNT": 180, "TRADE_AMOUNT": 3200, "CURRENCY": "CNY", "income_expenses": "支出"}]
+    },
+    {
+      "basic_registration": {
+        "qymc": "芜湖云铉智能装备有限公司",
+        "uniscid": "91340200DEMO000002",
+        "qyjc": "云铉装备",
+        "cyrs": 486,
+        "zczb": 3800,
+        "sjzb": 3600,
+        "jyfw": "工业机器人、自动化生产线和智能检测装备研发、制造、销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [{"gdlx": "企业法人", "czbl": 61, "sje": 2318, "sjfs": "货币", "rjcze": 2318, "sjrq": "2024-05-30", "rjczrq": "2024-05-30", "rjczfs": "货币"}],
+      "annual_reports": [{"vendinc": 28600, "progro": 3200, "netinc": 2600, "ratgro": 10, "liagro": 7}],
+      "innovation_evaluations": [{"SMALL_ENTERPRISES": "是", "HIGHANDNEW_ENTERPRISES": "是"}],
+      "patents": [{"ZLLX": "发明专利", "FMMC": "柔性装配线的控制方法"}],
+      "administrative_penalties": [{"XZJG": "测试机关", "JDRQ": "2025-02-17", "ZXQK": "待核验", "CFMC": "测试行政处罚"}]
+    },
+    {
+      "basic_registration": {
+        "qymc": "苏州汇凌精密制造有限公司",
+        "uniscid": "91320500DEMO000003",
+        "cyrs": 190,
+        "zczb": 1200,
+        "sjzb": 800,
+        "jyfw": "精密机械零部件制造和销售",
+        "industrycogb": "制造业"
+      },
+      "equity_pledges": [{"czgqse": 560}],
+      "dishonest_enforcement_records": [{"SXBZXRJTQX": "待核验"}]
+    }
+  ]
+}

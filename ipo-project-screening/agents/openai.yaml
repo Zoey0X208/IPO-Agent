@@ -1,0 +1,6 @@
+interface:
+  display_name: "IPO 项目承揽筛选"
+  short_description: "筛选 IPO 承揽线索并规划培育、整改与核验"
+  default_prompt: "使用 $ipo-project-screening 对这批企业进行 IPO 承揽获客和立项预研筛选。"
+policy:
+  allow_implicit_invocation: true

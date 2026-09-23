@@ -1,0 +1,1453 @@
+{
+  "companies": [
+    {
+      "basic_registration": {
+        "qymc": "测试企业01号集成电路",
+        "uniscid": "91340100DEMO0000000001",
+        "qyjc": "测试01",
+        "cyrs": 127,
+        "zczb": 3200,
+        "sjzb": 2660,
+        "jyfw": "集成电路研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是",
+          "SMALL_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试核心工艺"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业02号智能装备",
+        "uniscid": "91340100DEMO0000000002",
+        "qyjc": "测试02",
+        "cyrs": 144,
+        "zczb": 3400,
+        "sjzb": 2820,
+        "jyfw": "智能装备研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 56000,
+          "progro": 7200,
+          "netinc": 5800,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 71000,
+          "progro": 9400,
+          "netinc": 7800,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 19600,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 19600,
+          "I5_Q1": 2200,
+          "I14_Q1": 520
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 22400,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 22400,
+          "I5_Q1": 2600,
+          "I14_Q1": 600
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 840,
+          "PAID_VAT_AMOUNT": 840,
+          "PAYABLE_INCOMETAX_AMOUNT": 420,
+          "PAID_INCOMETAX_AMOUNT": 420
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 9000,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 6400,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是",
+          "SMALL_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试核心工艺"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业03号先进材料",
+        "uniscid": "91340100DEMO0000000003",
+        "qyjc": "测试03",
+        "cyrs": 161,
+        "zczb": 3600,
+        "sjzb": 2980,
+        "jyfw": "先进材料研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 84000,
+          "progro": 10800,
+          "netinc": 8700,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 106500,
+          "progro": 14100,
+          "netinc": 11700,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 29400,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 29400,
+          "I5_Q1": 3300,
+          "I14_Q1": 780
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 33600,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 33600,
+          "I5_Q1": 3900,
+          "I14_Q1": 900
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 1260,
+          "PAID_VAT_AMOUNT": 1260,
+          "PAYABLE_INCOMETAX_AMOUNT": 630,
+          "PAID_INCOMETAX_AMOUNT": 630
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 13500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 9600,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是",
+          "SMALL_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试核心工艺"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业04号工业机器人",
+        "uniscid": "91340100DEMO0000000004",
+        "qyjc": "测试04",
+        "cyrs": 178,
+        "zczb": 3800,
+        "sjzb": 3140,
+        "jyfw": "工业机器人研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 112000,
+          "progro": 14400,
+          "netinc": 11600,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 142000,
+          "progro": 18800,
+          "netinc": 15600,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 39200,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 39200,
+          "I5_Q1": 4400,
+          "I14_Q1": 1040
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 44800,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 44800,
+          "I5_Q1": 5200,
+          "I14_Q1": 1200
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 1680,
+          "PAID_VAT_AMOUNT": 1680,
+          "PAYABLE_INCOMETAX_AMOUNT": 840,
+          "PAID_INCOMETAX_AMOUNT": 840
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 18000,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 12800,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是",
+          "SMALL_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试核心工艺"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业05号功率半导体",
+        "uniscid": "91340100DEMO0000000005",
+        "qyjc": "测试05",
+        "cyrs": 195,
+        "zczb": 4000,
+        "sjzb": 3300,
+        "jyfw": "功率半导体研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 140000,
+          "progro": 18000,
+          "netinc": 14500,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 177500,
+          "progro": 23500,
+          "netinc": 19500,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 49000,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 49000,
+          "I5_Q1": 5500,
+          "I14_Q1": 1300
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 56000,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 56000,
+          "I5_Q1": 6500,
+          "I14_Q1": 1500
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 2100,
+          "PAID_VAT_AMOUNT": 2100,
+          "PAYABLE_INCOMETAX_AMOUNT": 1050,
+          "PAID_INCOMETAX_AMOUNT": 1050
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 22500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 16000,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是",
+          "SMALL_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试核心工艺"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业06号集成电路",
+        "uniscid": "91340100DEMO0000000006",
+        "qyjc": "测试06",
+        "cyrs": 212,
+        "zczb": 4200,
+        "sjzb": 3460,
+        "jyfw": "集成电路研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试技术方案"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业07号智能装备",
+        "uniscid": "91340100DEMO0000000007",
+        "qyjc": "测试07",
+        "cyrs": 229,
+        "zczb": 4400,
+        "sjzb": 3620,
+        "jyfw": "智能装备研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试技术方案"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业08号先进材料",
+        "uniscid": "91340100DEMO0000000008",
+        "qyjc": "测试08",
+        "cyrs": 246,
+        "zczb": 4600,
+        "sjzb": 3780,
+        "jyfw": "先进材料研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试技术方案"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业09号工业机器人",
+        "uniscid": "91340100DEMO0000000009",
+        "qyjc": "测试09",
+        "cyrs": 263,
+        "zczb": 4800,
+        "sjzb": 3940,
+        "jyfw": "工业机器人研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试技术方案"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业10号功率半导体",
+        "uniscid": "91340100DEMO0000000010",
+        "qyjc": "测试10",
+        "cyrs": 280,
+        "zczb": 5000,
+        "sjzb": 4100,
+        "jyfw": "功率半导体研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "innovation_evaluations": [
+        {
+          "HIGHANDNEW_ENTERPRISES": "是"
+        }
+      ],
+      "patents": [
+        {
+          "ZLLX": "发明专利",
+          "FMMC": "测试技术方案"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业11号集成电路",
+        "uniscid": "91340100DEMO0000000011",
+        "qyjc": "测试11",
+        "cyrs": 297,
+        "zczb": 5200,
+        "sjzb": 4260,
+        "jyfw": "集成电路研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "equity_pledges": [
+        {
+          "czgqse": 1600
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业12号智能装备",
+        "uniscid": "91340100DEMO0000000012",
+        "qyjc": "测试12",
+        "cyrs": 314,
+        "zczb": 5400,
+        "sjzb": 4420,
+        "jyfw": "智能装备研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "administrative_penalties": [
+        {
+          "XZJG": "测试机关",
+          "JDRQ": "2026-03-12",
+          "ZXQK": "待核验",
+          "CFMC": "测试处罚"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业13号先进材料",
+        "uniscid": "91340100DEMO0000000013",
+        "qyjc": "测试13",
+        "cyrs": 331,
+        "zczb": 5600,
+        "sjzb": 4580,
+        "jyfw": "先进材料研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "dishonest_enforcement_records": [
+        {
+          "SXBZXRJTQX": "待核验"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业14号工业机器人",
+        "uniscid": "91340100DEMO0000000014",
+        "qyjc": "测试14",
+        "cyrs": 348,
+        "zczb": 5800,
+        "sjzb": 4740,
+        "jyfw": "工业机器人研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": [
+        {
+          "gdlx": "企业法人",
+          "czbl": 62,
+          "sje": 2400,
+          "sjfs": "货币",
+          "rjcze": 2400,
+          "sjrq": "2025-06-30",
+          "rjczrq": "2025-06-30",
+          "rjczfs": "货币"
+        },
+        {
+          "gdlx": "合伙企业",
+          "czbl": 18,
+          "sje": 700,
+          "sjfs": "货币",
+          "rjcze": 700,
+          "sjrq": "2025-08-15",
+          "rjczrq": "2025-08-15",
+          "rjczfs": "货币"
+        }
+      ],
+      "annual_reports": [
+        {
+          "vendinc": 28000,
+          "progro": 3600,
+          "netinc": 2900,
+          "ratgro": 12,
+          "liagro": 8
+        },
+        {
+          "vendinc": 35500,
+          "progro": 4700,
+          "netinc": 3900,
+          "ratgro": 15,
+          "liagro": 9
+        }
+      ],
+      "tax_base_indicators": [
+        {
+          "tjnf": "2025",
+          "I1_Q1": 9800,
+          "I1_Q1_YOY": 12,
+          "I4_Q1": 9800,
+          "I5_Q1": 1100,
+          "I14_Q1": 260
+        },
+        {
+          "tjnf": "2026",
+          "I1_Q1": 11200,
+          "I1_Q1_YOY": 14,
+          "I4_Q1": 11200,
+          "I5_Q1": 1300,
+          "I14_Q1": 300
+        }
+      ],
+      "tax_payment_records": [
+        {
+          "PAYABLE_VAT_AMOUNT": 420,
+          "PAID_VAT_AMOUNT": 420,
+          "PAYABLE_INCOMETAX_AMOUNT": 210,
+          "PAID_INCOMETAX_AMOUNT": 210
+        }
+      ],
+      "bank_cash_flow_income": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "CURRENCY": "CNY",
+          "TRADE_AMOUNT": 4500,
+          "TRADE_BALANCE": 900,
+          "TRADE_EFFECT": "收入",
+          "TRADE_PATH": "银行"
+        }
+      ],
+      "bank_cash_flow_expenses": [
+        {
+          "TRADE_DATE": "202607",
+          "TRADE_TYPE": "转账",
+          "TRADE_COUNT": 18,
+          "TRADE_BLANCE": 700,
+          "TRADE_AVG_AMOUNT": 180,
+          "TRADE_AMOUNT": 3200,
+          "CURRENCY": "CNY",
+          "income_expenses": "支出"
+        }
+      ],
+      "serious_illegal_records": [
+        {
+          "lrycwfqymdyy": "待核验原因",
+          "sxqx": "待核验",
+          "cljg": "待核验",
+          "lierrq": "2026-03-12"
+        }
+      ]
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业15号精密制造",
+        "uniscid": "91340100DEMO0000000015",
+        "qyjc": "测试15",
+        "cyrs": null,
+        "zczb": 6000,
+        "sjzb": 4900,
+        "jyfw": "精密制造研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": []
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业16号精密制造",
+        "uniscid": "91340100DEMO0000000016",
+        "qyjc": "测试16",
+        "cyrs": null,
+        "zczb": 6200,
+        "sjzb": 5060,
+        "jyfw": "精密制造研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": []
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业17号精密制造",
+        "uniscid": "91340100DEMO0000000017",
+        "qyjc": "测试17",
+        "cyrs": null,
+        "zczb": 6400,
+        "sjzb": 5220,
+        "jyfw": "精密制造研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": []
+    },
+    {
+      "basic_registration": {
+        "qymc": "测试企业18号精密制造",
+        "uniscid": "91340100DEMO0000000018",
+        "qyjc": "测试18",
+        "cyrs": null,
+        "zczb": 6600,
+        "sjzb": 5380,
+        "jyfw": "精密制造研发、生产和销售",
+        "industrycogb": "制造业"
+      },
+      "shareholder_contributions": []
+    }
+  ]
+}

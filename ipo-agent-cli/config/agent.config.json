@@ -1,0 +1,28 @@
+{
+  "version": "2026-09-ipo-project-selection-v10-excel-selected-inputs-only",
+  "endpoint": "https://api.chatanywhere.tech/v1/chat/completions",
+  "model": "deepseek-v4-flash",
+  "request": {
+    "temperature": 0.1,
+    "max_tokens": 4000,
+    "timeout_ms": 60000
+  },
+  "selection": {
+    "default_top_k": 10,
+    "target_markets": [],
+    "focus_industries": [],
+    "focus_regions": [],
+    "our_strengths": [],
+    "excluded_industries": [],
+    "horizon_months": 36
+  },
+  "skill": {
+    "path": "../ipo-project-screening",
+    "references": [
+      "references/screening-framework.md",
+      "references/excel-selected-data-boundary.md",
+      "references/pre-screen-risk-modules.md",
+      "references/output-templates.md"
+    ]
+  }
+}
