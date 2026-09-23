@@ -1,0 +1,83 @@
+{
+  "schema_version": "2026-09-23",
+  "source_workbook": "数据表信息项-需求-数据探查v2.xlsx",
+  "selection_rule": "Sheet1 / 纳入需求（投行）=√",
+  "data_minimisation_note": "仅保留完成企业池预研所需的已勾选字段；个人身份、联系方式、账户和住址字段不传入模型。",
+  "basic_registration": {
+    "table_id": "app_340000_tab00558",
+    "table_name": "企业登记基本信息",
+    "fields": ["qymc", "uniscid", "cyrs", "zczb", "sjzb", "jyfw", "industrycogb", "qyjc"]
+  },
+  "tables": {
+    "shareholder_contributions": {
+      "table_id": "app_340000_tab00568",
+      "table_name": "股东及出资信息表",
+      "fields": ["gdlx", "czbl", "sje", "sjfs", "rjcze", "sjrq", "rjczrq", "rjczfs"]
+    },
+    "equity_pledges": {
+      "table_id": "app_340000_tab00575",
+      "table_name": "股权出质登记信息",
+      "fields": ["czgqse"]
+    },
+    "annual_reports": {
+      "table_id": "app_340000_tab00569",
+      "table_name": "企业年报",
+      "fields": ["vendinc", "progro", "netinc", "ratgro", "liagro"]
+    },
+    "serious_illegal_records": {
+      "table_id": "app_340000_tab00566",
+      "table_name": "全省严重违法失信企业名单",
+      "fields": ["lrycwfqymdyy", "sxqx", "cljg", "lierrq"]
+    },
+    "continuing_registration": {
+      "table_id": "app_rzxd_xcqydjzcxx",
+      "table_name": "存续企业登记注册信息",
+      "fields": ["INSURED_PERSON_NUMBER"]
+    },
+    "tax_payment_records": {
+      "table_id": "app_rzxd_nsxx",
+      "table_name": "纳税信息",
+      "fields": ["PAYABLE_VAT_AMOUNT", "PAID_VAT_AMOUNT", "PAYABLE_INCOMETAX_AMOUNT", "PAID_INCOMETAX_AMOUNT"]
+    },
+    "dishonest_enforcement_records": {
+      "table_id": "app_340000_tab00824",
+      "table_name": "失信被执行人信息",
+      "fields": ["SXBZXRJTQX"]
+    },
+    "customs_serious_dishonesty": {
+      "table_id": "app_340000_tab10176",
+      "table_name": "海关严重失信基础信息",
+      "fields": ["MOVE_IN_DATE"]
+    },
+    "innovation_evaluations": {
+      "table_id": "app_rzxd_kjyfXX",
+      "table_name": "企业创新评价信息",
+      "fields": ["LITTLEGIANT_ENTERPRISES", "SMALL_ENTERPRISES", "INNOVATE_ENTERPRISES", "HIGHANDNEW_ENTERPRISES", "TECHNOLOGY_ENTERPRISES", "NATION_HIGHTECH_ENTERPRISE", "SUPPORT_INFORMATION"]
+    },
+    "administrative_penalties": {
+      "table_id": "app_frk_ggxx_xzcf_gb",
+      "table_name": "行政处罚信息",
+      "fields": ["XZJG", "JDRQ", "ZXQK", "CFJG", "CFYJ", "CFSY", "CFLB2", "CFLB1", "CFMC", "JDSWH", "XXFL", "CF_NR_WFFF", "CF_NR_FK", "CF_WFXW"]
+    },
+    "patents": {
+      "table_id": "APP_340000_TAB10213",
+      "table_name": "专利信息",
+      "fields": ["ZLLX", "FMMC"]
+    },
+    "tax_base_indicators": {
+      "table_id": "TAX_BASE_INFO",
+      "table_name": "税务指标数据",
+      "fields": ["tjnf", "I1_Q1", "I1_Q2", "I1_Q3", "I1_Q4", "I1_Q1_YOY", "I1_Q2_YOY", "I1_Q3_YOY", "I1_Q4_YOY", "I4_Q1", "I4_Q2", "I4_Q3", "I4_Q4", "I4_Q1_YOY", "I4_Q2_YOY", "I4_Q3_YOY", "I4_Q4_YOY", "I5_Q1", "I5_Q2", "I5_Q3", "I5_Q4", "I5_Q1_YOY", "I5_Q2_YOY", "I5_Q3_YOY", "I5_Q4_YOY", "I6_Q1", "I6_Q2", "I6_Q3", "I6_Q4", "I7_Q1", "I7_Q2", "I7_Q3", "I7_Q4", "I8_Q1", "I8_Q2", "I8_Q3", "I8_Q4", "I9_AY", "I14_Q1", "I14_Q2", "I14_Q3", "I14_Q4", "I15_HY1", "I15_HY2"]
+    },
+    "bank_cash_flow_income": {
+      "table_id": "BANK_CASH_FLOW_REVENUE",
+      "table_name": "资金流水明细表（收入表）",
+      "fields": ["TRADE_DATE", "TRADE_TYPE", "CURRENCY", "TRADE_AMOUNT", "TRADE_BALANCE", "TRADE_EFFECT", "TRADE_PATH"]
+    },
+    "bank_cash_flow_expenses": {
+      "table_id": "BANK_CASH_FLOW_EXPENSES",
+      "table_name": "银行流水汇总（支出表）",
+      "fields": ["TRADE_DATE", "TRADE_TYPE", "TRADE_COUNT", "TRADE_BLANCE", "TRADE_AVG_AMOUNT", "TRADE_AMOUNT", "CURRENCY", "income_expenses"]
+    }
+  }
+}

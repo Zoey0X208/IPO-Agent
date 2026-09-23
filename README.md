@@ -20,9 +20,11 @@ IPO-Agent/
 ├─ .gitignore
 ├─ ipo-agent-cli/                    # Python / AgentScope 命令行程序
 │  ├─ config/agent.config.json       # 模型、Skill路径和运营方配置
+│  ├─ config/excel-selected-fields.json # 有版本的Excel字段白名单
 │  ├─ data/                          # JSON 示例及可提交的企业数据
 │  ├─ ipo_agent/                     # 输入校验、证据整理、调用与输出校验
 │  ├─ scripts/generate_demo_batch.py
+│  ├─ tests/                         # 输入边界、字段映射和输出契约回归测试
 │  └─ main.py
 └─ ipo-project-screening/            # 运行时加载的中文 Skill
    ├─ SKILL.md
@@ -78,10 +80,22 @@ $python = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
 
 API Key 通过 `IPO_AGENT_API_KEY`、`CHATANYWHERE_API_KEY` 或 `ipo-agent-cli/api_key.txt` 读取；不得提交到仓库。
 
+## 测试与字段映射
+
+字段白名单已独立为带版本的 [excel-selected-fields.json](ipo-agent-cli/config/excel-selected-fields.json)。运行时与测试均从该文件读取；更新 Excel 勾选范围时，应先更新该映射、再运行测试，避免字段规则散落在代码中。
+
+```powershell
+cd "C:\Users\GY\Desktop\IPO Agent\ipo-agent-cli"
+$python = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
+& $python -m unittest discover -s tests -v
+```
+
+测试覆盖：输入字段白名单与实体归一、版本化映射与原始 Excel 勾选状态（本地 Excel 存在时）、以及 Skill 输出的证据可追溯契约。
+
 ## 关键文档
 
-- [完整 CLI 输入、运行与输出说明](ipo-agent-cli/README.md)
-- [企业输入字段白名单](ipo-agent-cli/ipo_agent/input.py)
+- [版本化企业输入字段白名单](ipo-agent-cli/config/excel-selected-fields.json)
+- [输入校验实现](ipo-agent-cli/ipo_agent/input.py)
 - [中文筛选 Skill](ipo-project-screening/SKILL.md)
 - [Excel勾选字段映射](ipo-project-screening/references/excel-selected-data-boundary.md)
 - [预研风险模块与核验闭环](ipo-project-screening/references/pre-screen-risk-modules.md)

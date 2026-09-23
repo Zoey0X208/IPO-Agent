@@ -11,60 +11,50 @@ class InputValidationError(ValueError):
     """Raised when input is not restricted to the selected Excel fields."""
 
 
-# Source: 数据表信息项-需求-数据探查v2.xlsx / 表1 需求确认 / 纳入需求（投行）=√
-# Personal and account-level fields that were selected in the workbook are
-# intentionally omitted from the model payload under data-minimisation rules.
-BASIC_FIELDS = (
-    "qymc", "uniscid", "cyrs", "zczb", "sjzb", "jyfw", "industrycogb", "qyjc",
-)
+# Source: 数据表信息项-需求-数据探查v2.xlsx / 表1 需求确认 / 纳入需求（投行）=√.
+# The versioned mapping is deliberately separate from business screening logic.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+FIELD_MAPPING_PATH = PROJECT_ROOT / "config" / "excel-selected-fields.json"
 
+
+def load_field_mapping() -> dict[str, Any]:
+    try:
+        mapping = json.loads(FIELD_MAPPING_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError as error:
+        raise RuntimeError(f"找不到Excel字段映射文件：{FIELD_MAPPING_PATH}") from error
+    except json.JSONDecodeError as error:
+        raise RuntimeError(f"Excel字段映射文件格式错误：{FIELD_MAPPING_PATH}") from error
+    if not isinstance(mapping, dict) or not isinstance(mapping.get("schema_version"), str):
+        raise RuntimeError("Excel字段映射必须包含 schema_version。")
+    if not isinstance(mapping.get("basic_registration"), dict) or not isinstance(mapping.get("tables"), dict):
+        raise RuntimeError("Excel字段映射缺少 basic_registration 或 tables。")
+    return mapping
+
+
+def fields_from_spec(spec: dict[str, Any], location: str) -> tuple[str, ...]:
+    table_id = spec.get("table_id")
+    table_name = spec.get("table_name")
+    fields = spec.get("fields")
+    if not isinstance(table_id, str) or not table_id or not isinstance(table_name, str) or not table_name:
+        raise RuntimeError(f"Excel字段映射 {location} 缺少 table_id 或 table_name。")
+    if not isinstance(fields, list) or not fields or not all(isinstance(field, str) and field for field in fields):
+        raise RuntimeError(f"Excel字段映射 {location}.fields 必须是非空字符串数组。")
+    if len(fields) != len(set(fields)):
+        raise RuntimeError(f"Excel字段映射 {location}.fields 存在重复字段。")
+    return tuple(fields)
+
+
+FIELD_MAPPING = load_field_mapping()
+MAPPING_VERSION = FIELD_MAPPING["schema_version"]
+BASIC_SOURCE = FIELD_MAPPING["basic_registration"]
+BASIC_FIELDS = fields_from_spec(BASIC_SOURCE, "basic_registration")
+if not {"qymc", "uniscid"}.issubset(BASIC_FIELDS):
+    raise RuntimeError("Excel字段映射 basic_registration 必须包含 qymc 和 uniscid。")
+
+TABLE_SOURCES: dict[str, dict[str, Any]] = FIELD_MAPPING["tables"]
 TABLE_SPECS: dict[str, tuple[str, tuple[str, ...]]] = {
-    "shareholder_contributions": (
-        "股东及出资信息表",
-        ("gdlx", "czbl", "sje", "sjfs", "rjcze", "sjrq", "rjczrq", "rjczfs"),
-    ),
-    "equity_pledges": ("股权出质登记信息", ("czgqse",)),
-    "annual_reports": ("企业年报", ("vendinc", "progro", "netinc", "ratgro", "liagro")),
-    "serious_illegal_records": ("全省严重违法失信企业名单", ("lrycwfqymdyy", "sxqx", "cljg", "lierrq")),
-    "continuing_registration": ("存续企业登记注册信息", ("INSURED_PERSON_NUMBER",)),
-    "tax_payment_records": (
-        "纳税信息",
-        ("PAYABLE_VAT_AMOUNT", "PAID_VAT_AMOUNT", "PAYABLE_INCOMETAX_AMOUNT", "PAID_INCOMETAX_AMOUNT"),
-    ),
-    "dishonest_enforcement_records": ("失信被执行人信息", ("SXBZXRJTQX",)),
-    "customs_serious_dishonesty": ("海关严重失信基础信息", ("MOVE_IN_DATE",)),
-    "innovation_evaluations": (
-        "企业创新评价信息",
-        (
-            "LITTLEGIANT_ENTERPRISES", "SMALL_ENTERPRISES", "INNOVATE_ENTERPRISES",
-            "HIGHANDNEW_ENTERPRISES", "TECHNOLOGY_ENTERPRISES", "NATION_HIGHTECH_ENTERPRISE",
-            "SUPPORT_INFORMATION",
-        ),
-    ),
-    "administrative_penalties": (
-        "行政处罚信息",
-        ("XZJG", "JDRQ", "ZXQK", "CFJG", "CFYJ", "CFSY", "CFLB2", "CFLB1", "CFMC", "JDSWH", "XXFL", "CF_NR_WFFF", "CF_NR_FK", "CF_WFXW"),
-    ),
-    "patents": ("专利信息", ("ZLLX", "FMMC")),
-    "tax_base_indicators": (
-        "税务指标数据",
-        (
-            "tjnf", "I1_Q1", "I1_Q2", "I1_Q3", "I1_Q4", "I1_Q1_YOY", "I1_Q2_YOY", "I1_Q3_YOY", "I1_Q4_YOY",
-            "I4_Q1", "I4_Q2", "I4_Q3", "I4_Q4", "I4_Q1_YOY", "I4_Q2_YOY", "I4_Q3_YOY", "I4_Q4_YOY",
-            "I5_Q1", "I5_Q2", "I5_Q3", "I5_Q4", "I5_Q1_YOY", "I5_Q2_YOY", "I5_Q3_YOY", "I5_Q4_YOY",
-            "I6_Q1", "I6_Q2", "I6_Q3", "I6_Q4", "I7_Q1", "I7_Q2", "I7_Q3", "I7_Q4",
-            "I8_Q1", "I8_Q2", "I8_Q3", "I8_Q4", "I9_AY", "I14_Q1", "I14_Q2", "I14_Q3", "I14_Q4",
-            "I15_HY1", "I15_HY2",
-        ),
-    ),
-    "bank_cash_flow_income": (
-        "资金流水明细表（收入表）",
-        ("TRADE_DATE", "TRADE_TYPE", "CURRENCY", "TRADE_AMOUNT", "TRADE_BALANCE", "TRADE_EFFECT", "TRADE_PATH"),
-    ),
-    "bank_cash_flow_expenses": (
-        "银行流水汇总（支出表）",
-        ("TRADE_DATE", "TRADE_TYPE", "TRADE_COUNT", "TRADE_BLANCE", "TRADE_AVG_AMOUNT", "TRADE_AMOUNT", "CURRENCY", "income_expenses"),
-    ),
+    key: (spec["table_name"], fields_from_spec(spec, f"tables.{key}"))
+    for key, spec in TABLE_SOURCES.items()
 }
 
 
@@ -124,7 +114,12 @@ def normalize_company(record: Any, index: int) -> dict[str, Any]:
         normalized_basic[numeric_field] = non_negative_number(basic.get(numeric_field))
 
     table_profile: dict[str, Any] = {"basic_registration": normalized_basic, "provided_tables": []}
-    provenance = [{"table": "企业登记基本信息", "fields": [field for field in BASIC_FIELDS if normalized_basic.get(field) not in (None, "")] }]
+    provenance = [{
+        "mapping_version": MAPPING_VERSION,
+        "table_id": BASIC_SOURCE["table_id"],
+        "table": BASIC_SOURCE["table_name"],
+        "fields": [field for field in BASIC_FIELDS if normalized_basic.get(field) not in (None, "")],
+    }]
     for key, (table, fields) in TABLE_SPECS.items():
         raw_rows = record.get(key)
         if raw_rows is not None and not isinstance(raw_rows, list):
@@ -134,7 +129,12 @@ def normalize_company(record: Any, index: int) -> dict[str, Any]:
             table_profile["provided_tables"].append(key)
         table_profile[key] = rows
         if rows:
-            provenance.append({"table": table, "fields": list(fields)})
+            provenance.append({
+                "mapping_version": MAPPING_VERSION,
+                "table_id": TABLE_SOURCES[key]["table_id"],
+                "table": table,
+                "fields": list(fields),
+            })
 
     aliases = unique_texts([name, text(basic.get("qyjc"))])
     return {
@@ -192,7 +192,10 @@ def minimize_records(value: Any, fields: tuple[str, ...], location: str) -> list
 
 
 def reject_unselected_fields(value: dict[str, Any], allowed: set[str], location: str) -> None:
-    unsupported = sorted(key for key, item in value.items() if key not in allowed and item not in (None, "", [], {}))
+    # Strictly reject every unknown key, including empty placeholders.  Otherwise a
+    # caller could silently send non-selected Excel fields that happen to be blank
+    # in the current batch, weakening the input contract.
+    unsupported = sorted(key for key in value if key not in allowed)
     if unsupported:
         raise InputValidationError(
             f"{location} 包含未在《数据表信息项-需求-数据探查v2.xlsx》投行勾选范围内的字段：{', '.join(unsupported)}。"
