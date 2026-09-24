@@ -80,6 +80,8 @@ $python = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
 
 API Key 通过 `IPO_AGENT_API_KEY`、`CHATANYWHERE_API_KEY` 或 `ipo-agent-cli/api_key.txt` 读取；不得提交到仓库。
 
+模型网络调用由 AgentScope 最多重试两次；若模型内容未通过 JSON 契约，会额外进行**一次仅限结构与证据引用修复**的调用。修复不能搜索外部数据或改变原有业务判断；再次失败则交由人工复核。可在 `request.output_repair_attempts` 设为 `0` 关闭该修复。
+
 ## 测试与字段映射
 
 字段白名单已独立为带版本的 [excel-selected-fields.json](ipo-agent-cli/config/excel-selected-fields.json)。运行时与测试均从该文件读取；更新 Excel 勾选范围时，应先更新该映射、再运行测试，避免字段规则散落在代码中。
@@ -90,7 +92,13 @@ $python = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
 & $python -m unittest discover -s tests -v
 ```
 
-测试覆盖：输入字段白名单与实体归一、版本化映射与原始 Excel 勾选状态（本地 Excel 存在时）、以及 Skill 输出的证据可追溯契约。
+测试覆盖：输入字段白名单与实体归一、版本化映射与原始 Excel 勾选状态（本地 Excel 存在时）、Skill 输出的证据可追溯与全企业覆盖契约，以及一次 JSON 修复重试。
+
+## 可复现性与安全边界
+
+每份输出报告的 `reproducibility` 节记录不含原文数据的摘要：标准化企业输入、Agent 配置、Excel 字段映射和本次加载 Skill 文件的 SHA-256，以及实际模型、endpoint、请求参数与修复尝试信息。可据此定位数据、配置、Skill 或模型变化。
+
+企业字段均被按不可信数据处理：字段内的提示词、角色声明、链接或指令不会改变 Skill 规则、触发外部动作或被当作运营方指令。
 
 ## 关键文档
 

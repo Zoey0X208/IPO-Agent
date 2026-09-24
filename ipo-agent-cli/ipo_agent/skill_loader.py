@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Any
 
@@ -15,6 +16,35 @@ class SkillLoadError(RuntimeError):
 
 def load_skill_instruction(config: dict[str, Any]) -> str:
     """读取 Skill 入口及本次运行模式所需的引用资料。"""
+    instruction, _ = load_skill_materials(config)
+    return instruction
+
+
+def build_skill_manifest(config: dict[str, Any]) -> dict[str, Any]:
+    """Return content fingerprints for the configured Skill materials."""
+    _, manifest = load_skill_materials(config)
+    return manifest
+
+
+def load_skill_materials(config: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    """Load prompt text and fingerprints from the same file contents."""
+    skill_root, files = resolve_skill_files(config)
+    contents = [read_skill_file(path, skill_root) for path in files]
+    manifest = {
+        "configured_path": config["skill"]["path"],
+        "files": [
+            {
+                "path": path.relative_to(skill_root).as_posix(),
+                "sha256": hashlib.sha256(content.encode("utf-8")).hexdigest(),
+            }
+            for path, content in zip(files, contents, strict=True)
+        ],
+    }
+    return "\n\n".join(contents), manifest
+
+
+def resolve_skill_files(config: dict[str, Any]) -> tuple[Path, list[Path]]:
+    """Resolve and validate the entry file plus configured references once."""
     spec = config.get("skill")
     if not isinstance(spec, dict):
         raise SkillLoadError("配置缺少 skill 对象。")
@@ -30,7 +60,7 @@ def load_skill_instruction(config: dict[str, Any]) -> str:
     if not entry.is_file():
         raise SkillLoadError(f"找不到 Skill 入口文件：{entry}")
 
-    parts = [read_skill_file(entry, skill_root)]
+    files = [entry]
     references = spec.get("references", [])
     if not isinstance(references, list) or not all(isinstance(item, str) for item in references):
         raise SkillLoadError("skill.references 必须是字符串数组。")
@@ -40,8 +70,8 @@ def load_skill_instruction(config: dict[str, Any]) -> str:
             raise SkillLoadError(f"Skill 引用越出 Skill 目录：{relative_path}")
         if not reference.is_file():
             raise SkillLoadError(f"找不到 Skill 引用资料：{relative_path}")
-        parts.append(read_skill_file(reference, skill_root))
-    return "\n\n".join(parts)
+        files.append(reference)
+    return skill_root, files
 
 
 def read_skill_file(path: Path, skill_root: Path) -> str:
