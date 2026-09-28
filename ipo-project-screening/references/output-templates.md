@@ -79,6 +79,10 @@
 
 ## 填写规则
 
+- **先完成 JSON 结构自检，再返回。** 所有数组字段必须使用 `[]`，即使只有一项也必须写成数组，不能以字符串或对象替代数组。
+- `data_conflicts` 必须是数组；无冲突时写 `[]`。每一个冲突对象必须同时含有四个字段：`field`（字符串）、`claims`（字符串数组，单条也写成 `["口径A"]`）、`evidence_ids`（字符串数组）和 `handling`（字符串，说明保留口径、待核验或其他处理方式）。例如：`{"field":"年度营收","claims":["口径A","口径B"],"evidence_ids":["entity-xxx.financial"],"handling":"保留两种口径，取得审计材料前不选用任一口径。"}`。
+- 每个 `SelectedTarget` 的所有必填字段都必须存在；`data_conflicts`、`pre_screen_risk_register`、`information_gaps` 和 `mandatory_verifications` 可以为空数组，但不得省略字段。
+- 为避免输出截断：每个自由文本字段只写一条简洁、可追溯的判断；仅列出影响当前路径的冲突、风险、缺口和核验事项，禁止复述输入证据或重复六视角内容。
 - `selected_targets` 数量不得超过 `selection_context.top_k`，`selection_order` 从1连续编号；不要求凑满。
 - 同一企业只能在 `selected_targets`、`cultivate_targets`、`not_selected` 中出现一次；`cultivate_targets.stage` 只能是 `cultivate`、`pre_project_diagnostic`、`counselling_cultivate`、`risk_remediation_first` 或 `monitor`。
 - 每家立即接触企业必须恰有 `industry`、`valuation`、`business`、`financial`、`legal_compliance`、`lead_conversion` 六项视角，六项各一次，不得重复或遗漏。

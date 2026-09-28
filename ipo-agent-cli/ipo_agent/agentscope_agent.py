@@ -58,6 +58,19 @@ def create_model(config: dict[str, Any], model_override: str | None, endpoint_ov
     if not api_key:
         raise AgentScopeRequestError("未检测到 API Key。请设置 IPO_AGENT_API_KEY / CHATANYWHERE_API_KEY，或在项目根目录 api_key.txt 中粘贴密钥；也可使用 --dry-run 仅运行本地预筛。")
     request = config["request"]
+    extra_body = request.get("extra_body")
+    if extra_body is not None and not isinstance(extra_body, dict):
+        raise AgentScopeRequestError("request.extra_body 必须是 JSON 对象")
+    if isinstance(extra_body, dict) and "max_tokens" in extra_body:
+        try:
+            if int(extra_body["max_tokens"]) != int(request["max_tokens"]):
+                raise AgentScopeRequestError(
+                    "request.extra_body.max_tokens 必须与 request.max_tokens 保持一致"
+                )
+        except (TypeError, ValueError) as error:
+            raise AgentScopeRequestError(
+                "request.extra_body.max_tokens 必须是正整数"
+            ) from error
     base_url = chat_completions_to_base_url(endpoint_override or config["endpoint"])
     return OpenAIChatModel(
         credential=OpenAICredential(api_key=SecretStr(api_key), base_url=base_url),
@@ -69,6 +82,7 @@ def create_model(config: dict[str, Any], model_override: str | None, endpoint_ov
         stream=False,
         max_retries=2,
         client_kwargs={"timeout": request["timeout_ms"] / 1000},
+        extra_body=extra_body,
     )
 
 

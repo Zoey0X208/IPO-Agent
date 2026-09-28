@@ -1,12 +1,21 @@
 {
-  "version": "2026-09-ipo-project-selection-v11-skill-owned-selection-with-final-supervision",
+  "version": "2026-09-ipo-project-selection-v14-chatanywhere-max-tokens-compat",
   "endpoint": "https://api.chatanywhere.tech/v1/chat/completions",
   "model": "deepseek-v4-flash",
   "request": {
     "temperature": 0.1,
-    "max_tokens": 4000,
-    "timeout_ms": 60000,
-    "output_repair_attempts": 1
+    "max_tokens": 16000,
+    "timeout_ms": 300000,
+    "output_repair_attempts": 1,
+    "extra_body": {
+      "max_tokens": 16000,
+      "response_format": {
+        "type": "json_object"
+      },
+      "chat_template_kwargs": {
+        "thinking": false
+      }
+    }
   },
   "selection": {
     "default_top_k": 10,

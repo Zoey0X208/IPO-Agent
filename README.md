@@ -87,6 +87,8 @@ uv run python main.py --input data\example-batch.json --output output\selection.
 
 API Key 通过 `IPO_AGENT_API_KEY`、`CHATANYWHERE_API_KEY` 或 `ipo-agent-cli/api_key.txt` 读取；不得提交到仓库。
 
+当前 ChatAnywhere 兼容配置会在 AgentScope 的请求外，额外通过 `request.extra_body.max_tokens` 下发同一输出预算，并关闭思考模式、要求 JSON 对象输出。这是该网关对 `max_completion_tokens` 的兼容处理；`request.max_tokens` 与 `request.extra_body.max_tokens` 必须保持相同。默认 16,000 token、300 秒超时用于完整批量 JSON，避免长结果被截断。
+
 模型网络调用由 AgentScope 最多重试两次；若模型内容未通过 JSON 契约，会额外进行**一次仅限结构与证据引用修复**的调用。修复不能搜索外部数据或改变原有业务判断；再次失败则交由人工复核。可在 `request.output_repair_attempts` 设为 `0` 关闭该修复。
 
 ## 测试与字段映射
