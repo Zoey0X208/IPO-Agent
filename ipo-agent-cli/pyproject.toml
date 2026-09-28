@@ -1,0 +1,9 @@
+[project]
+name = "ipo-agent-cli"
+version = "0.1.0"
+description = "AgentScope CLI for IPO and Pre-IPO enterprise-pool screening."
+requires-python = ">=3.12"
+dependencies = [
+    "agentscope==2.0.8",
+    "pydantic>=2,<3",
+]

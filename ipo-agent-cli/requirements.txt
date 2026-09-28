@@ -1,2 +1,3 @@
+# 兼容 pip 的依赖清单；日常维护请更新 pyproject.toml 并提交 uv.lock。
 agentscope==2.0.8
 pydantic>=2,<3

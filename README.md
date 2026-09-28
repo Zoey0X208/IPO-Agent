@@ -25,6 +25,9 @@ IPO-Agent/
 │  ├─ ipo_agent/                     # 输入校验、证据整理、调用与输出校验
 │  ├─ scripts/generate_demo_batch.py
 │  ├─ tests/                         # 输入边界、字段映射和输出契约回归测试
+│  ├─ pyproject.toml                 # uv 项目与直接依赖声明
+│  ├─ uv.lock                        # 可提交的精确依赖锁文件
+│  ├─ .python-version                # 固定 Python 3.12
 │  └─ main.py
 └─ ipo-project-screening/            # 运行时加载的中文 Skill
    ├─ SKILL.md
@@ -53,24 +56,28 @@ Skill 仅对输入已有线索建立以下预研风险模块，而非完整IPO�
 
 ## 运行
 
-环境：Python 3.12、AgentScope 2.x、OpenAI Chat Completions 兼容接口。
+环境：Python 3.12、uv、AgentScope 2.x、OpenAI Chat Completions 兼容接口。
 
 ```powershell
+# 首次安装 uv（只需一次）
+winget install --id=astral-sh.uv -e
+
 cd "C:\Users\GY\Desktop\IPO Agent\ipo-agent-cli"
-$python = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
-& $python -m pip install -r requirements.txt
+uv sync
 ```
+
+`pyproject.toml` 与 `uv.lock` 是依赖的唯一维护来源；`requirements.txt` 暂时保留，仅用于兼容仍使用 pip 的环境。
 
 只整理证据、不调用模型：
 
 ```powershell
-& $python main.py --input data\example-batch.json --output output\evidence.json --dry-run
+uv run python main.py --input data\example-batch.json --output output\evidence.json --dry-run
 ```
 
 调用模型做完整筛选：
 
 ```powershell
-& $python main.py --input data\example-batch.json --output output\selection.json
+uv run python main.py --input data\example-batch.json --output output\selection.json
 ```
 
 默认 endpoint 与模型位于 [agent.config.json](ipo-agent-cli/config/agent.config.json)：
@@ -88,8 +95,7 @@ API Key 通过 `IPO_AGENT_API_KEY`、`CHATANYWHERE_API_KEY` 或 `ipo-agent-cli/a
 
 ```powershell
 cd "C:\Users\GY\Desktop\IPO Agent\ipo-agent-cli"
-$python = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
-& $python -m unittest discover -s tests -v
+uv run python -m unittest discover -s tests -v
 ```
 
 测试覆盖：输入字段白名单与实体归一、版本化映射与原始 Excel 勾选状态（本地 Excel 存在时）、Skill 输出的证据可追溯与全企业覆盖契约，以及一次 JSON 修复重试。
