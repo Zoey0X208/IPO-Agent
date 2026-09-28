@@ -95,6 +95,23 @@ class NotSelectedTarget(BaseModel):
     re_evaluation_trigger: str
 
 
+class IndividualProjectAssessment(BaseModel):
+    """One-company assessment used before portfolio-level comparison.
+
+    This is intentionally smaller than the final report contract.  The Skill
+    owns the preliminary path; Python only validates that the result belongs to
+    the one evidence package that was sent to the model.
+    """
+
+    company_name: str
+    preliminary_path: Literal["engage_now", "cultivate", "not_selected"]
+    preliminary_reason: str
+    evidence_ids: list[str]
+    key_risks: list[str]
+    information_gaps: list[str]
+    verification_actions: list[str]
+
+
 class BatchProjectSelection(BaseModel):
     data_integrity_summary: DataIntegritySummary
     screening_thesis: str = Field(description="本批企业的共同筛选结论。")

@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-ipo-project-selection-v14-chatanywhere-max-tokens-compat",
+  "version": "2026-09-ipo-project-selection-v15-staged-screening",
   "endpoint": "https://api.chatanywhere.tech/v1/chat/completions",
   "model": "deepseek-v4-flash",
   "request": {
@@ -18,6 +18,8 @@
     }
   },
   "selection": {
+    "pipeline": "staged",
+    "single_company_max_tokens": 3000,
     "default_top_k": 10,
     "target_markets": [],
     "focus_industries": [],
@@ -32,7 +34,8 @@
       "references/screening-framework.md",
       "references/excel-selected-data-boundary.md",
       "references/pre-screen-risk-modules.md",
-      "references/output-templates.md"
+      "references/output-templates.md",
+      "references/staged-screening-workflow.md"
     ]
   }
 }

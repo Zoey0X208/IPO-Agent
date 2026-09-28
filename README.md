@@ -9,7 +9,8 @@
 - 企业输入只能来自《数据表信息项-需求-数据探查v2.xlsx》中标记为“纳入需求（投行）=√”的字段。
 - JSON 输入按需选择字段；仅 `qymc`、`uniscid` 必填。非勾选字段会被程序拒绝。
 - Python 不负责企业排序或路径分流，只做字段白名单校验、实体归一和中立证据整理。
-- 中文 Skill 在运行时由 AgentScope 加载，负责整批企业的相对筛选、最大待验证假设和核验动作。
+- 中文 Skill 在运行时由 AgentScope 加载，负责单企业判断和整批企业的相对筛选、最大待验证假设和核验动作。
+- Python 负责逐家调度模型调用、结构校验和最终汇总，不把行业、财务或获客阈值写死在代码里。
 - 不将流水、税额、专利数量或登记信息直接等同于营业收入、利润、估值、融资需求或上市能力。
 
 ## 项目结构
@@ -40,10 +41,12 @@ IPO-Agent/
 flowchart LR
     A[已勾选Excel字段导出JSON] --> B[字段白名单与实体归一]
     B --> C[中立证据包：不排序]
-    C --> D[AgentScope加载中文Skill]
-    D --> E[批量比较、路径与行动]
+    C --> D[逐家调用 Skill 做独立初筛]
+    D --> E[Skill 汇总比较与路径排序]
     E --> F[证据引用和JSON校验]
 ```
+
+默认使用“单企业逐家筛选 → 组合汇总”流水线。每家企业独立调用一次模型，避免把十几家企业和全部详细字段塞进同一个判断请求；最后只调用一次组合汇总请求完成相对排序。`selection.pipeline` 可切换为 `batch` 兼容旧的单次批量调用。
 
 Skill 仅对输入已有线索建立以下预研风险模块，而非完整IPO尽调或红黄绿评级：
 
@@ -80,14 +83,14 @@ uv run python main.py --input data\example-batch.json --output output\evidence.j
 uv run python main.py --input data\example-batch.json --output output\selection.json
 ```
 
-默认 endpoint 与模型位于 [agent.config.json](ipo-agent-cli/config/agent.config.json)：
+默认 endpoint、模型和流水线配置位于 [agent.config.json](ipo-agent-cli/config/agent.config.json)：
 
 - endpoint：`https://api.chatanywhere.tech/v1/chat/completions`
 - model：`deepseek-v4-flash`
 
 API Key 通过 `IPO_AGENT_API_KEY`、`CHATANYWHERE_API_KEY` 或 `ipo-agent-cli/api_key.txt` 读取；不得提交到仓库。
 
-当前 ChatAnywhere 兼容配置会在 AgentScope 的请求外，额外通过 `request.extra_body.max_tokens` 下发同一输出预算，并关闭思考模式、要求 JSON 对象输出。这是该网关对 `max_completion_tokens` 的兼容处理；`request.max_tokens` 与 `request.extra_body.max_tokens` 必须保持相同。默认 16,000 token、300 秒超时用于完整批量 JSON，避免长结果被截断。
+当前 ChatAnywhere 兼容配置会在 AgentScope 的请求外，额外通过 `request.extra_body.max_tokens` 下发同一输出预算，并关闭思考模式、要求 JSON 对象输出。这是该网关对 `max_completion_tokens` 的兼容处理；`request.max_tokens` 与 `request.extra_body.max_tokens` 必须保持相同。组合汇总默认 16,000 token，单企业初筛由 `selection.single_company_max_tokens` 控制（默认 3,000），超时为 300 秒。
 
 模型网络调用由 AgentScope 最多重试两次；若模型内容未通过 JSON 契约，会额外进行**一次仅限结构与证据引用修复**的调用。修复不能搜索外部数据或改变原有业务判断；再次失败则交由人工复核。可在 `request.output_repair_attempts` 设为 `0` 关闭该修复。
 
@@ -110,7 +113,7 @@ uv run python -m unittest discover -s tests -v
 
 ## 监督、回放与本地门禁
 
-`Skill` 保留全部筛选和路径判断；最终监督器不生成新风险、不改写优先级、不计算分数。它只检查：每家企业恰好位于一个处理路径、六个视角各出现一次、引用的证据存在且属于该企业。未通过时仅允许一次针对报错字段的完整 JSON 定向复核；仍失败即停止并交由人工复核。
+`Skill` 保留全部筛选和路径判断；Python 只负责单企业调用边界、证据归属和 JSON 契约。最终监督器不生成新风险、不改写优先级、不计算分数。它只检查：每家企业恰好位于一个处理路径、六个视角各出现一次、引用的证据存在且属于该企业。单企业或组合输出未通过时仅允许一次针对报错字段的完整 JSON 定向复核；仍失败即停止并交由人工复核。
 
 离线复放固定样例的字段处理与中立证据包（不调用模型）：
 
@@ -136,6 +139,7 @@ uv run python scripts\validate_project.py
 - [中文筛选 Skill](ipo-project-screening/SKILL.md)
 - [Excel勾选字段映射](ipo-project-screening/references/excel-selected-data-boundary.md)
 - [预研风险模块与核验闭环](ipo-project-screening/references/pre-screen-risk-modules.md)
+- [分阶段单企业与组合筛选流程](ipo-project-screening/references/staged-screening-workflow.md)
 - [模型输出JSON契约](ipo-project-screening/references/output-templates.md)
 
 ## 数据与合规

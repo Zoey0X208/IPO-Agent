@@ -8,7 +8,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from .agentscope_agent import AgentScopeRequestError, run_batch_selection
+from .agentscope_agent import (
+    AgentScopeRequestError,
+    run_batch_selection,
+    run_staged_batch_selection,
+)
 from .input import InputValidationError, load_companies, load_selection_context
 from .report import build_batch_report
 from .screening import build_pre_screen
@@ -59,8 +63,17 @@ def main() -> None:
         mode = "local-evidence-preparation"
         if not args.dry_run:
             print("正在通过 AgentScope 比较企业池并选择项目候选…")
-            selection = run_batch_selection(config, companies, pre_screens, context, args.model, args.endpoint)
-            mode = "agentscope-openai-compatible-batch-selection"
+            pipeline = config.get("selection", {}).get("pipeline", "staged")
+            if pipeline == "staged":
+                selection = run_staged_batch_selection(
+                    config, companies, pre_screens, context, args.model, args.endpoint
+                )
+                mode = "agentscope-openai-compatible-staged-batch-selection"
+            else:
+                selection = run_batch_selection(
+                    config, companies, pre_screens, context, args.model, args.endpoint
+                )
+                mode = "agentscope-openai-compatible-batch-selection"
         report = build_batch_report(companies, context, pre_screens, selection, config, mode)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
