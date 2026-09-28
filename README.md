@@ -48,6 +48,16 @@ flowchart LR
 
 默认使用“单企业逐家筛选 → 组合汇总”流水线。每家企业独立调用一次模型，避免把十几家企业和全部详细字段塞进同一个判断请求；最后只调用一次组合汇总请求完成相对排序。`selection.pipeline` 可切换为 `batch` 兼容旧的单次批量调用。
 
+### 单企业判断路径
+
+在 `--individual-only` 模式下，每家企业会得到一个 `preliminary_path`：
+
+- `engage_now`：优先接触。当前证据支持投入下一步承揽预研资源，建议尽快开展资料索取、管理层沟通或专项核验；不代表企业满足 IPO 条件，也不代表融资或上市结果。
+- `cultivate`：培育跟进。企业存在一定业务或行业线索，但当前阶段、材料完整性、转化时点或风险闭环不足，先补材料、保持联系和定期复访。
+- `not_selected`：本轮暂不投入。当前证据不足、风险或匹配度较弱，不进入本轮重点承揽资源；满足 Skill 给出的重新评估条件后可以再次判断，不等于否定企业或作出投资结论。
+
+组合汇总模式还会把这些初步路径重新放在企业池中比较；单企业模式则只返回每家独立判断，不进行企业之间的排名。
+
 Skill 仅对输入已有线索建立以下预研风险模块，而非完整IPO尽调或红黄绿评级：
 
 - M1：主体与出资
@@ -83,6 +93,12 @@ uv run python main.py --input data\example-batch.json --output output\evidence.j
 uv run python main.py --input data\example-batch.json --output output\selection.json
 ```
 
+只逐家判断、不做组合汇总（适合批量测试每家企业的独立结果）：
+
+```powershell
+uv run python main.py --input data\demo-batch-18.json --individual-only --output output\individual-18.json
+```
+
 默认 endpoint、模型和流水线配置位于 [agent.config.json](ipo-agent-cli/config/agent.config.json)：
 
 - endpoint：`https://api.chatanywhere.tech/v1/chat/completions`
@@ -92,7 +108,7 @@ API Key 通过 `IPO_AGENT_API_KEY`、`CHATANYWHERE_API_KEY` 或 `ipo-agent-cli/a
 
 当前 ChatAnywhere 兼容配置会在 AgentScope 的请求外，额外通过 `request.extra_body.max_tokens` 下发同一输出预算，并关闭思考模式、要求 JSON 对象输出。这是该网关对 `max_completion_tokens` 的兼容处理；`request.max_tokens` 与 `request.extra_body.max_tokens` 必须保持相同。组合汇总默认 16,000 token，单企业初筛由 `selection.single_company_max_tokens` 控制（默认 3,000），超时为 300 秒。
 
-模型网络调用由 AgentScope 最多重试两次；若模型内容未通过 JSON 契约，会额外进行**一次仅限结构与证据引用修复**的调用。修复不能搜索外部数据或改变原有业务判断；再次失败则交由人工复核。可在 `request.output_repair_attempts` 设为 `0` 关闭该修复。
+模型网络调用由 AgentScope 最多重试两次；传统单次批量流程若模型内容未通过 JSON 契约，会额外进行一次仅限结构与证据引用修复。分阶段流程对单企业和组合结果最多进行三次同类结构修复，修复不能搜索外部数据或改变原有业务判断；仍失败则交由人工复核。可在 `request.output_repair_attempts` 设为 `0` 关闭修复。
 
 ## 测试与字段映射
 

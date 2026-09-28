@@ -185,6 +185,41 @@ class SelectionContractTests(unittest.TestCase):
         self.assertEqual(result["execution"]["portfolio_calls"], 1)
         self.assertEqual(result["supervision"]["status"], "passed")
 
+    def test_individual_only_pipeline_skips_portfolio(self) -> None:
+        replies = [
+            fake_reply(json.dumps({
+                "company_name": company["entity"]["name"],
+                "preliminary_path": "cultivate",
+                "preliminary_reason": "单企业测试结果。",
+                "evidence_ids": [package["evidence"][0]["evidence_id"]],
+                "key_risks": [],
+                "information_gaps": [],
+                "verification_actions": ["核验材料"],
+            }, ensure_ascii=False), f"only-{index}")
+            for index, (company, package) in enumerate(zip(self.companies, self.packages))
+        ]
+        model = FakeModel(replies)
+        config = {
+            "endpoint": "https://example.invalid/v1/chat/completions",
+            "model": "test-model",
+            "request": {"temperature": 0.1, "max_tokens": 4000, "timeout_ms": 60000, "output_repair_attempts": 1},
+            "selection": {"single_company_max_tokens": 1200},
+        }
+        with (
+            patch(
+                "ipo_agent.agentscope_agent.load_skill_materials",
+                return_value=("Skill instruction", {"configured_path": "test", "files": []}),
+            ),
+            patch("ipo_agent.agentscope_agent.create_model", return_value=model),
+        ):
+            result = asyncio.run(generate_staged_batch_selection(
+                config, self.companies, self.packages, self.context, aggregate=False,
+            ))
+        self.assertEqual(len(model.messages), 3)
+        self.assertEqual(result["execution"]["pipeline"], "single_company_only")
+        self.assertEqual(result["execution"]["portfolio_calls"], 0)
+        self.assertEqual(len(result["content"]["assessments"]), 3)
+
 
 class FakeModel:
     def __init__(self, replies: list[SimpleNamespace]) -> None:

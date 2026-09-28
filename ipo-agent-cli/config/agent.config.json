@@ -20,6 +20,7 @@
   "selection": {
     "pipeline": "staged",
     "single_company_max_tokens": 3000,
+    "staged_output_repair_attempts": 3,
     "default_top_k": 10,
     "target_markets": [],
     "focus_industries": [],

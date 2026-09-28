@@ -32,6 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help=f"输出报告路径（默认：{DEFAULT_OUTPUT}）。")
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="Agent 配置 JSON 路径。")
     parser.add_argument("--dry-run", action="store_true", help="不调用外部模型，仅输出证据整理结果，不做业务分流或项目排序。")
+    parser.add_argument("--individual-only", action="store_true", help="逐家调用 Skill 后直接输出每家结果，不执行组合汇总。")
     parser.add_argument("--model", help="临时覆盖配置中的模型名。")
     parser.add_argument("--endpoint", help="临时覆盖配置中的 Chat Completions 地址。")
     return parser
@@ -66,15 +67,39 @@ def main() -> None:
             pipeline = config.get("selection", {}).get("pipeline", "staged")
             if pipeline == "staged":
                 selection = run_staged_batch_selection(
-                    config, companies, pre_screens, context, args.model, args.endpoint
+                    config,
+                    companies,
+                    pre_screens,
+                    context,
+                    args.model,
+                    args.endpoint,
+                    aggregate=not args.individual_only,
                 )
-                mode = "agentscope-openai-compatible-staged-batch-selection"
+                mode = (
+                    "agentscope-openai-compatible-individual-screening"
+                    if args.individual_only
+                    else "agentscope-openai-compatible-staged-batch-selection"
+                )
             else:
                 selection = run_batch_selection(
                     config, companies, pre_screens, context, args.model, args.endpoint
                 )
                 mode = "agentscope-openai-compatible-batch-selection"
-        report = build_batch_report(companies, context, pre_screens, selection, config, mode)
+        if args.individual_only and selection:
+            report = {
+                "meta": {
+                    "mode": mode,
+                    "selection_version": config["version"],
+                    "model": selection["execution"].get("effective_model"),
+                    "model_execution": selection["execution"],
+                    "usage": selection.get("usage", {}),
+                    "skill_manifest": selection.get("skill_manifest", {}),
+                },
+                "companies_received": len(companies),
+                "individual_assessments": selection["content"]["assessments"],
+            }
+        else:
+            report = build_batch_report(companies, context, pre_screens, selection, config, mode)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"完成。报告已写入：{args.output.resolve()}")
