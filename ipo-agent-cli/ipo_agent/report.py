@@ -41,6 +41,7 @@ def build_batch_report(companies: list[dict[str, Any]], selection_context: dict[
         report["meta"]["model_request_id"] = selection.get("request_id", "")
         report["meta"]["usage"] = selection.get("usage", {})
         report["meta"]["model_execution"] = selection.get("execution", {})
+        report["meta"]["final_supervision"] = selection.get("supervision", {})
     return report
 
 
@@ -55,6 +56,7 @@ def build_reproducibility_manifest(companies: list[dict[str, Any]], config: dict
             "sha256": sha256_file(FIELD_MAPPING_PATH),
         },
         "model_execution": selection.get("execution", {}) if selection else {"invoked": False},
+        "final_supervision": selection.get("supervision", {}) if selection else {"invoked": False},
     }
     if selection:
         loaded_skill_manifest = selection.get("skill_manifest")

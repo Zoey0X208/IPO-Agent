@@ -8,6 +8,7 @@ Excel records and describes what evidence is available or missing.
 
 from __future__ import annotations
 
+import hashlib
 from typing import Any
 
 
@@ -15,13 +16,17 @@ def build_pre_screen(company: dict[str, Any], selection_context: dict[str, Any])
     """Build a traceable, judgement-free evidence package for the Skill."""
     entity = company["entity"]
     profile = company["table_profile"]
-    code_suffix = entity["unified_social_credit_code"][-6:]
+    # Keep evidence identifiers stable for a company without exposing its unified
+    # social credit code or relying on a collision-prone short suffix.
+    entity_token = hashlib.sha256(
+        entity["unified_social_credit_code"].encode("utf-8")
+    ).hexdigest()[:12]
     evidence: list[dict[str, Any]] = []
     risk_flags: list[dict[str, Any]] = []
     gaps: list[str] = []
 
     def add(evidence_id: str, fact: str, source: str) -> str:
-        full_id = f"{code_suffix}.{evidence_id}"
+        full_id = f"entity-{entity_token}.{evidence_id}"
         evidence.append({"evidence_id": full_id, "fact": fact, "source": source})
         return full_id
 

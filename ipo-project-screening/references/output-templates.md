@@ -81,7 +81,8 @@
 
 - `selected_targets` 数量不得超过 `selection_context.top_k`，`selection_order` 从1连续编号；不要求凑满。
 - 同一企业只能在 `selected_targets`、`cultivate_targets`、`not_selected` 中出现一次；`cultivate_targets.stage` 只能是 `cultivate`、`pre_project_diagnostic`、`counselling_cultivate`、`risk_remediation_first` 或 `monitor`。
-- 每家立即接触企业必须恰有 `industry`、`valuation`、`business`、`financial`、`legal_compliance`、`lead_conversion` 六项视角。
+- 每家立即接触企业必须恰有 `industry`、`valuation`、`business`、`financial`、`legal_compliance`、`lead_conversion` 六项视角，六项各一次，不得重复或遗漏。
+- 某家企业输出中的全部 `evidence_ids` 必须来自该企业自身的 evidence package；同批企业之间不得交叉引用证据。该规则同样适用于入选理由、最大待验证假设、六视角、数据冲突和风险登记。
 - 每家立即接触企业必须有一个 `key_validation_hypothesis`，且其 `evidence_ids` 非空；假设只说明继续投入承揽预研资源前必须验证的事项，不得将IPO资格或融资意向写成假设。
 - `pre_screen_risk_register` 仅登记 M1（主体与出资）、M2（股权出质）、M3（财务口径核验）、M8（法律合规）中输入已出现的线索。每项必须写明筛选影响、材料、动作和核验时点；无已知风险线索时可为空数组。
 - 当前输入没有估值、融资金额、融资意向、联系人或决策链时，`valuation`、`lead_conversion` 写 `to_be_verified`，`wechat_first_touch` 必须为 `null`。不可借助外部常识补写个性化话术。

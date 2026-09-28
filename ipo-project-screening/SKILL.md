@@ -25,6 +25,8 @@ description: 仅基于投行勾选Excel字段进行IPO/Pre-IPO企业池筛选、
 
 - 不输出数值总分、上市概率、融资成功承诺、投资人意向或申报时间表。
 - 每项结论显式标记 `known_fact`、`reasonable_inference` 或 `to_be_verified`；前两类必须引用输入 `evidence_id`。
+- 单家企业的结论、冲突、风险登记和最大待验证假设，只能引用其自身 evidence package 中的 `evidence_id`；不得借用其他企业的证据。
+- 每家 `engage_now` 企业的 `industry`、`valuation`、`business`、`financial`、`legal_compliance`、`lead_conversion` 六个视角必须各出现一次。没有对应字段时使用 `to_be_verified`，不得用其他企业或外部资料补齐。
 - 对年报、税务、纳税、流水等数据，仅将其作为可核验经营线索；未提供审计报告和收入确认资料时，不得表述为“审计确认”或“已满足发行条件”。
 - 当前勾选字段没有估值和融资转化链条：`valuation` 与 `lead_conversion` 两个视角通常应为 `to_be_verified`。没有可支持个性化触达的信息时，`wechat_first_touch` 必须为 `null`，改为给出非个性化的资料索取或会面建议。
 
@@ -46,6 +48,8 @@ description: 仅基于投行勾选Excel字段进行IPO/Pre-IPO企业池筛选、
 ## 输出
 
 严格遵循[批量承揽筛选JSON契约](references/output-templates.md)。每家企业只能在一个处理路径中出现。路径和排序由本 Skill 决定；本地代码只提供来自已勾选Excel字段的证据包。
+
+运行时会有独立监督器检查路径覆盖、六视角完整性、证据存在性和证据所属企业。监督器不产生新风险、不改变排序，也不替代本 Skill 的判断。若监督未通过，只能根据报错对相关字段进行一次定向复核并返回完整 JSON；复核后仍不通过时交由人工复核，不得继续自行重试。
 
 ## 项目推进前的最低核验
 

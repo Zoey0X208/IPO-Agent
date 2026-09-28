@@ -33,6 +33,10 @@ class ReproducibilityTests(unittest.TestCase):
                 "repair_attempted": True,
                 "attempts": [],
             },
+            "supervision": {
+                "status": "passed",
+                "supervisor": "deterministic-evidence-and-path-supervisor-v1",
+            },
         }
 
         report = build_batch_report(companies, context, packages, selection, config, "agentscope-openai-compatible-batch-selection")
@@ -45,6 +49,8 @@ class ReproducibilityTests(unittest.TestCase):
         self.assertTrue(reproducibility["skill"]["files"])
         self.assertEqual(report["meta"]["model"], "test-model-override")
         self.assertTrue(report["meta"]["model_execution"]["repair_attempted"])
+        self.assertEqual(report["meta"]["final_supervision"]["status"], "passed")
+        self.assertEqual(reproducibility["final_supervision"]["supervisor"], "deterministic-evidence-and-path-supervisor-v1")
 
     def test_dry_run_does_not_claim_skill_was_loaded(self) -> None:
         config = load_config(ROOT / "config" / "agent.config.json")

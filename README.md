@@ -106,6 +106,27 @@ uv run python -m unittest discover -s tests -v
 
 企业字段均被按不可信数据处理：字段内的提示词、角色声明、链接或指令不会改变 Skill 规则、触发外部动作或被当作运营方指令。
 
+## 监督、回放与本地门禁
+
+`Skill` 保留全部筛选和路径判断；最终监督器不生成新风险、不改写优先级、不计算分数。它只检查：每家企业恰好位于一个处理路径、六个视角各出现一次、引用的证据存在且属于该企业。未通过时仅允许一次针对报错字段的完整 JSON 定向复核；仍失败即停止并交由人工复核。
+
+离线复放固定样例的字段处理与中立证据包（不调用模型）：
+
+```powershell
+cd "C:\Users\GY\Desktop\IPO Agent\ipo-agent-cli"
+uv run python -m ipo_agent.replay
+```
+
+执行本地发布门禁（单元测试 + 离线证据回放，不包含模型评测）：
+
+```powershell
+uv run python scripts\validate_project.py
+```
+
+固定回放收据在 `ipo-agent-cli/data/canonical-replay/`。只有在人工审核字段映射、样例输入或中立证据整理确有预期变更后，才可用 `uv run python -m ipo_agent.replay --print-snapshot` 查看新快照并人工更新收据；普通运行不会自动覆盖。
+
+证据编号使用企业统一社会信用代码的不可逆短哈希，而不是信用代码尾号；这样既可稳定追溯同一家企业，也避免在报告中暴露信用代码片段。
+
 ## 关键文档
 
 - [版本化企业输入字段白名单](ipo-agent-cli/config/excel-selected-fields.json)

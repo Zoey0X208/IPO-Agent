@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-ipo-project-selection-v10-excel-selected-inputs-only",
+  "version": "2026-09-ipo-project-selection-v11-skill-owned-selection-with-final-supervision",
   "endpoint": "https://api.chatanywhere.tech/v1/chat/completions",
   "model": "deepseek-v4-flash",
   "request": {

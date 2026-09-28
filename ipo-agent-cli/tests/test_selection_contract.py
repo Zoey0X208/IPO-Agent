@@ -27,6 +27,7 @@ class SelectionContractTests(unittest.TestCase):
         cls.companies = load_companies(ROOT / "data" / "example-batch.json")
         cls.packages = [build_pre_screen(company, cls.context) for company in cls.companies]
         cls.evidence_id = cls.packages[0]["evidence"][0]["evidence_id"]
+        cls.other_company_evidence_id = cls.packages[1]["evidence"][0]["evidence_id"]
 
     def valid_payload(self) -> dict:
         lenses = [
@@ -62,7 +63,9 @@ class SelectionContractTests(unittest.TestCase):
 
     def test_hypothesis_and_risk_register_are_traceable(self) -> None:
         selection = BatchProjectSelection.model_validate(self.valid_payload()).model_dump()
-        validate_batch_selection(selection, self.packages, self.context)
+        receipt = validate_batch_selection(selection, self.packages, self.context)
+        self.assertEqual(receipt["status"], "passed")
+        self.assertEqual(receipt["engage_now_checked"], 1)
 
     def test_unknown_evidence_is_rejected(self) -> None:
         payload = self.valid_payload()
@@ -77,6 +80,30 @@ class SelectionContractTests(unittest.TestCase):
         selection = BatchProjectSelection.model_validate(payload).model_dump()
         with self.assertRaises(ValueError):
             validate_batch_selection(selection, self.packages, self.context)
+
+    def test_cross_company_evidence_is_rejected(self) -> None:
+        payload = self.valid_payload()
+        payload["selected_targets"][0]["selection_reasons"][0]["evidence_ids"] = [
+            self.other_company_evidence_id
+        ]
+        selection = BatchProjectSelection.model_validate(payload).model_dump()
+        with self.assertRaisesRegex(ValueError, "其他企业"):
+            validate_batch_selection(selection, self.packages, self.context)
+
+    def test_each_six_lens_must_appear_once(self) -> None:
+        payload = self.valid_payload()
+        payload["selected_targets"][0]["six_lens_assessment"][5]["lens"] = "industry"
+        selection = BatchProjectSelection.model_validate(payload).model_dump()
+        with self.assertRaisesRegex(ValueError, "六视角"):
+            validate_batch_selection(selection, self.packages, self.context)
+
+    def test_to_be_verified_lens_can_leave_evidence_empty(self) -> None:
+        payload = self.valid_payload()
+        valuation = payload["selected_targets"][0]["six_lens_assessment"][1]
+        valuation["basis"] = "to_be_verified"
+        valuation["evidence_ids"] = []
+        selection = BatchProjectSelection.model_validate(payload).model_dump()
+        validate_batch_selection(selection, self.packages, self.context)
 
     def test_every_input_company_must_have_one_path(self) -> None:
         payload = self.valid_payload()
@@ -108,7 +135,8 @@ class SelectionContractTests(unittest.TestCase):
         self.assertEqual(len(model.messages), 2)
         self.assertTrue(result["execution"]["repair_attempted"])
         self.assertEqual(result["request_id"], "repaired-response")
-        self.assertEqual(result["execution"]["attempts"][1]["stage"], "json_contract_repair")
+        self.assertEqual(result["execution"]["attempts"][1]["stage"], "bounded_targeted_recheck")
+        self.assertEqual(result["supervision"]["status"], "passed")
         self.assertEqual(result["skill_manifest"]["configured_path"], "test")
         initial_input_text = model.messages[0][1].content[0].text
         self.assertIn("input_data_handling", initial_input_text)

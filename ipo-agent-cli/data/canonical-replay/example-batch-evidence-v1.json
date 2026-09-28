@@ -1,0 +1,13 @@
+{
+  "case_id": "example-batch-evidence-v1",
+  "source_input": "data/example-batch.json",
+  "config_path": "config/agent.config.json",
+  "expected": {
+    "field_mapping_schema_version": "2026-09-23",
+    "field_mapping_source_workbook_sha256": "38a74d6761cbad2dc6c9bf6b16845bb9c29cfb8d064467b4a64ef065fa2cdc78",
+    "companies_received": 3,
+    "normalized_input_sha256": "b342db55cc5161316e994c983d0ee98870848659967549db11803c4c8fbf8bce",
+    "selection_context_sha256": "fa35b2af0114e49379de46ade98211c6d2f6eb4ca144075ec6d3bc8b96abbd4d",
+    "evidence_packages_sha256": "93169772d954809ad2e606759071744b471774b77d47ce3d98cfc8133d7d4b0f"
+  }
+}
