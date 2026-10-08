@@ -222,6 +222,12 @@ async def generate_staged_batch_selection(
             "selection_context": selection_context,
             "evidence_package": pre_screen,
             "output_contract": "IndividualProjectAssessment",
+            "output_constraints": [
+                "只能输出一个合法 JSON 对象，不要 Markdown、代码块、解释或前后缀。",
+                "字段名必须严格使用 IndividualProjectAssessment 契约。",
+                "所有数组字段必须保持数组格式；缺失信息写入 information_gaps。",
+                "JSON 字符串中的双引号、换行和反斜杠必须正确转义。",
+            ],
         }
         reply = await _call_model(
             single_model,
